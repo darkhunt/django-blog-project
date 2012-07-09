@@ -16,7 +16,6 @@ class post(models.Model):
 	body=models.TextField()
 	created=models.DateField()
 	updated=models.DateField()
-	#comment=models.ForeignKey('self')
 	author=models.ForeignKey(author)
 	
 	def __unicode__(self):
@@ -27,13 +26,33 @@ class post(models.Model):
 class comment(models.Model):
 	name=models.CharField(max_length=60)
 	email=models.CharField(max_length=60)
-	#post=models.CharField(max_length=60)
 	post=models.ForeignKey(post)
+	body=models.TextField()
+	created=models.DateField()
+	updated=models.DateField()
 	def __unicode__(self):
 		return self.name
+        def body_60(self):
+		return self.body[:60]
 
-admin.site.register(post)
+class commentlnline(admin.TabularInline):
+	model=comment
+	
+class postAdmin(admin.ModelAdmin):
+	list_display=('title','created','updated')
+	search_fields=('title','body')
+	list_filter=('created','author')
+	inlines=[commentlnline]
+	
+
+class commentAdmin(admin.ModelAdmin):
+	list_display=('post','body_60','name','created','updated',)
+	filter_fields=('created','author')
+	
+
+
+admin.site.register(post,postAdmin)
 admin.site.register(author)
-admin.site.register(comment)
+admin.site.register(comment,commentAdmin)
 
 

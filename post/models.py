@@ -19,7 +19,7 @@ class post(models.Model):
 	author=models.ForeignKey(author)
 	
 	def __unicode__(self):
-		return ''
+		return self.title
 
 
 

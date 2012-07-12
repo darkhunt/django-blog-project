@@ -22,7 +22,8 @@ class post(models.Model):
 		return self.title
 	def get_absolute_url(self):
 	        return ("/hunter/posts/%i/true" % self.id)
-
+        def body_60(self):
+		return self.body[:60]
 
 class comment(models.Model):
 	name=models.CharField(max_length=60)

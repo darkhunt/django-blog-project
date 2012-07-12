@@ -1,4 +1,6 @@
 import dj_database_url
+import os
+SITE_ROOT= os.path.dirname(os.path.realpath(__file__))
 # Django settings for hunter project.
 
 DEBUG = True
@@ -101,6 +103,7 @@ ROOT_URLCONF = 'hunter.urls'
 WSGI_APPLICATION = 'hunter.wsgi.application'
 
 TEMPLATE_DIRS = (
+	os.path.join(SITE_ROOT,'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -114,7 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hunter',
+    
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

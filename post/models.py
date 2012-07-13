@@ -14,8 +14,8 @@ class author(models.Model):
 class post(models.Model):
 	title=models.CharField(max_length=60)
 	body=models.TextField()
-	created=models.DateField()
-	updated=models.DateField()
+	created=models.DateField(auto_now=True)
+	updated=models.DateField(auto_now=True)
 	author=models.ForeignKey(author)
 	
 	def __unicode__(self):
@@ -30,8 +30,8 @@ class comment(models.Model):
 	email=models.CharField(max_length=60)
 	post=models.ForeignKey(post)
 	body=models.TextField()
-	created=models.DateField()
-	updated=models.DateField()
+	created=models.DateField(auto_now=True)
+	updated=models.DateField(auto_now=True)
 	def __unicode__(self):
 		return self.name
         def body_60(self):

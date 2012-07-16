@@ -1,0 +1,23 @@
+<!--
+the template for your login page
+This should be places in the templates/reg
+folder. Name it what you will, but make sure
+that the view function has the correct path
+
+-->
+
+
+
+{% extends "blog/base.html" %}
+
+{% block content %}
+{%if logged_out%}
+you are logged out
+{%else%}
+
+
+<h4>You have been successfully logged out.</h4>
+<a href='/reg/login'>login</a>
+{%endif%}
+{% endblock %}
+

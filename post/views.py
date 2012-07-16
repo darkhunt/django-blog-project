@@ -26,7 +26,7 @@ def post_list(request):
 class commentForm(ModelForm):
 	class Meta:
 	  model=comment
-	  exclude=['post']
+	  exclude=['post','name']
 
 @csrf_exempt
 def post_detail(request, id, showComments=False):
@@ -35,6 +35,7 @@ def post_detail(request, id, showComments=False):
         wanted_post=h
     if request.method == 'POST':
 	the_comment= comment(post=wanted_post)
+	the_comment.name= request.user
 	form=commentForm(request.POST,instance=the_comment)
         if form.is_valid ():
 	   form.save()
@@ -45,7 +46,7 @@ def post_detail(request, id, showComments=False):
    
     comments = comment.objects.filter(post = id)
     t = loader.get_template('blog/post_detail.html')
-    c = Context ({ 'post' :wanted_post, 'comments' : comments, 'form':form})
+    c = Context ({ 'post' :wanted_post, 'comments' : comments, 'form':form,'user':request.user})
     return HttpResponse(t.render(c))
 
 

@@ -20,7 +20,9 @@
      	Last Updated : {{ c.updated }}<br />
 	</div>
 	{% if user.username == c.name %}
-	<a href="/hunter/posts/edit_comment/{{ c.id}}/edit">Edit comment</a>
+
+
+	<a class='btn btn-primary' href="/hunter/posts/edit_comment/{{ c.id}}/edit"  >Edit comment</a>
 	{% endif %}
 	<p></p><hr />	
      {% endfor %}

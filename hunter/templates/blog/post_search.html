@@ -4,6 +4,8 @@
 <h2>Search Parameter : {{ term }} </h2>
 <h3>Post Results:</h3>
 <ul>
+
+
 {% for post in posts %}
     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
 {% endfor %}

@@ -1,12 +1,15 @@
 {% extends "blog/base.html" %}
 {% block content %}
-     <a href='/reg/logout'>logout</a>                                                                                           
+
+                                                                                             
     <h3>{{ post.title }}</h3>
     <p> {{ post.body }}</p>
      Date  Created : {{ post.created }}<br />
      Last Updated  : {{ post.updated }}
      
      <h3>All Comments</h3>
+
+
     
      {% for c in comments %}
 	

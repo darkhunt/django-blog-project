@@ -15,7 +15,7 @@ from django.http import HttpResponseRedirect
 def post_list(request):
     posts = post.objects.all()
     t = loader.get_template('blog/post_list.html')
-    c = Context({ 'posts' :posts}) 
+    c = Context({ 'posts' :posts,'user':request.user}) 
    # html=''
     #for i in post_list:
        # html+='<p>'+ str(i ) +'</p>'+ '<br/>' +i.body +'<br/>'
@@ -80,4 +80,4 @@ def post_search(request, term):
     return render_to_response('blog/post_search.html', {'posts' : post_see , 'term' : term} )
 
 def home(request):
-  return render_to_response('blog/base.html', {} ) 
+  return render_to_response('blog/base.html', {'user' :request.user} ) 

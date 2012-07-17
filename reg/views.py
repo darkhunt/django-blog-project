@@ -30,7 +30,7 @@ def do_login(request):
 		if user is not None:    
 			if user.is_active:
          			login(request,user)
-         			return HttpResponseRedirect(request.path)
+         			return HttpResponseRedirect('/hunter/posts')
         		else:
         			return HttpResponse('account cannot be verified')
      	
